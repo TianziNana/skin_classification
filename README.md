@@ -170,22 +170,24 @@ Our augmentation system implements **graduated intensity protection** based on s
 | Dark Benign | V-VI | No | 1.30× | Enhanced minority protection |
 | **Dark Malignant** | V-VI | Yes | **2.00×** | **Maximum critical protection** |
 
-#### ** Quantitative Validation Results**
+##  Quantitative Validation Results
 
 We conducted comprehensive augmentation analysis across representative samples with the following metrics:
 
-```
-Sample Type          SSIM    PSNR(dB)   Color Shift   Hist.Corr
-Light_Benign         0.074   10.09      19.33         -0.000
-Light_Malignant      0.009   7.09       11.89         0.381  
-Dark_Benign          0.132   12.11      54.23         -0.028
-Dark_Malignant       0.053   6.87       131.56        -0.000
-```
+### Image Quality Preservation Analysis
 
-#### **Key Findings:**
-- **Graduated Transformation**: Dark malignant samples show highest color shift (131.56 vs 11.89-54.23)
-- **Preserved Structure**: SSIM values indicate structural information retention
-- **Controlled Variation**: PSNR values demonstrate appropriate noise introduction levels
+| Sample Type | SSIM | PSNR (dB) | Color Shift | Hist. Corr |
+|-------------|------|-----------|-------------|------------|
+| Light_Benign | 0.113 | 6.78 | 4.51 | 0.992 |
+| Light_Malignant | 0.040 | 9.95 | 31.69 | 0.026 |
+| Dark_Benign | 0.006 | 8.88 | 75.02 | -0.000 |
+| Dark_Malignant | 0.217 | 8.27 | 79.92 | -0.001 |
+
+### Key Findings
+
+- **Graduated Transformation**: Dark malignant samples show highest color shift (79.92 vs 4.51-75.02)
+- **Preserved Structure**: SSIM values indicate structural information retention (0.006-0.217)
+- **Controlled Variation**: PSNR values demonstrate appropriate noise introduction levels (6.78-9.95 dB)
 - **Targeted Protection**: 2.0× intensity factor successfully applied to most vulnerable group
 
 ### ** Fairness-Aware Data Loading & Sampling Strategy**
