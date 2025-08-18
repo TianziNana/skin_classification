@@ -1,0 +1,51 @@
+MIT License
+
+Copyright (c) 2025 [Tianzi Liu]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Additional Attribution
+
+This project builds upon the Fitzpatrick17k dataset and acknowledges:
+
+- Fitzpatrick17k Dataset: Groh, M., Harris, C., Soenksen, L., et al. (2021)
+- EfficientNet Architecture: Tan, M., & Le, Q. (2019)
+- Focal Loss Implementation: Lin, T. Y., et al. (2017)
+
+## Citation
+
+If you use this code in your research, please cite:
+
+```bibtex
+@misc{fairness_skin_classification_2024,
+  title={Fairness-Aware Skin Disease Classification: Addressing Racial Bias in Medical AI},
+  author={[Your Name]},
+  year={2024},
+  howpublished={\url{https://github.com/[your-username]/fairness-aware-skin-classification}},
+  note={A novel approach to mitigating racial bias in dermatological AI systems}
+}
+```
+
+## Disclaimer
+
+This software is for research purposes only and should not be used for clinical 
+diagnosis without proper validation and regulatory approval. The authors are not 
+responsible for any clinical decisions made based on this software.
