@@ -1,0 +1,64 @@
+# Core Deep Learning Framework
+torch>=1.12.0
+torchvision>=0.13.0
+torchaudio>=0.12.0
+
+# Computer Vision and Image Processing
+opencv-python>=4.6.0
+Pillow>=9.0.0
+albumentations>=1.3.0
+scikit-image>=0.19.0
+
+# Pre-trained Models and Transfer Learning
+timm>=0.6.12
+
+# Machine Learning and Data Science
+scikit-learn>=1.1.0
+pandas>=1.4.0
+numpy>=1.21.0
+scipy>=1.8.0
+
+# Visualization and Plotting
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.10.0
+
+# Progress Bars and Utilities
+tqdm>=4.64.0
+colorama>=0.4.5
+
+# Configuration and File Handling
+PyYAML>=6.0
+h5py>=3.7.0
+
+# Jupyter Notebook Support
+jupyter>=1.0.0
+ipykernel>=6.15.0
+notebook>=6.4.0
+
+# Medical Image Analysis (Optional)
+pydicom>=2.3.0
+nibabel>=4.0.0
+
+# Fairness and Bias Analysis Libraries
+aif360>=0.5.0
+fairlearn>=0.8.0
+
+# Additional Utilities
+requests>=2.28.0
+pathlib2>=2.3.0
+
+# GPU Acceleration (Optional - CUDA support)
+# Uncomment if using CUDA:
+# torch==1.12.0+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html
+# torchvision==0.13.0+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html
+
+# Development and Testing (Optional)
+pytest>=7.1.0
+black>=22.6.0
+flake8>=5.0.0
+mypy>=0.971
+
+# Memory Profiling (Optional)
+memory-profiler>=0.60.0
+psutil>=5.9.0
