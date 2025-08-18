@@ -1,26 +1,61 @@
-# 🏥 Fairness-Aware Skin Disease Classification
+#  Fairness-Aware Skin Disease Classification
 
 **A Novel Approach to Mitigating Racial Bias in Dermatological AI Systems**
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.12+-red.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Paper](https://img.shields.io/badge/Paper-arXiv-orange.svg)](#)
 
-## 🎯 **Project Overview**
+
+
+## Abstract
+
+Harnessing deep learning to classify skin lesions holds immense promise for early diagnosis and timely treatment of dermatological conditions. However, existing diagnostic models often underperform on patients with darker skin tones, potentially exacerbating health disparities. In this project, we introduce a fairness-aware framework that integrates Fitzpatrick-adaptive augmentation, weighted sampling strategies, and real-time bias monitoring into a skin disease classifier trained on the Fitzpatrick17k dataset. Achieving a robust AUC of 0.8718 while reducing performance gaps across skin tones, our approach not only maintains clinical-grade accuracy but also advances healthcare equity.
+
+
+## Introduction & Background
+
+Early and accurate diagnosis of skin conditions, especially malignant lesions, is crucial for effective treatment. Deep learning models have achieved near-expert performance in dermatological image classification. Yet, a critical limitation remains: **model performance significantly varies across skin tones**, with darker skin often underrepresented in datasets and underserved by AI systems.
+
+The Fitzpatrick17k dataset offers skin lesion images annotated with Fitzpatrick skin types I–VI, highlighting stark imbalances—light tones (I–II) account for nearly half the data (~47%), while darker tones (V–VI) comprise only ~13%, and malignant cases within dark tones are rarer still (<2%). These disparities not only impair model fairness but may lead to **biased clinical outcomes and health injustices**.
+
+In response, we propose a **fairness-aware classification framework** built on three pillars:
+1. **Fitzpatrick-adaptive data augmentation**, enriching underrepresented skin types while preserving image integrity.
+2. **Hierarchical weighted sampling**, boosting exposure of minority and high-risk groups during training.
+3. **Real-time bias monitoring**, allowing dynamic tracking of performance across skin types.
+
+Together, these components enable a model that is both **effective and equitable**, better supporting diverse patient populations.
+
+
+## Problem Statement
+
+### Introduction & Background
+
+Early and accurate diagnosis of skin conditions, especially malignant lesions, is crucial for effective treatment. Deep learning models have achieved near-expert performance in dermatological image classification. Yet, a critical limitation remains: **model performance significantly varies across skin tones**, with darker skin often underrepresented in datasets and underserved by AI systems.
+
+The Fitzpatrick17k dataset offers skin lesion images annotated with Fitzpatrick skin types I–VI, highlighting stark imbalances—light tones (I–II) account for nearly half the data (~47%), while darker tones (V–VI) comprise only ~13%, and malignant cases within dark tones are rarer still (<2%). These disparities not only impair model fairness but may lead to **biased clinical outcomes and health injustices**.
+
+In response, we propose a **fairness-aware classification framework** built on three pillars:
+1. **Fitzpatrick-adaptive data augmentation**, enriching underrepresented skin types while preserving image integrity.
+2. **Hierarchical weighted sampling**, boosting exposure of minority and high-risk groups during training.
+3. **Real-time bias monitoring**, allowing dynamic tracking of performance across skin types.
+
+Together, these components enable a model that is both **effective and equitable**, better supporting diverse patient populations.
+
+
+##  **Project Overview**
 
 This project addresses the critical challenge of **diagnostic bias in medical AI** by developing a comprehensive fairness-aware framework for skin disease classification. Using the Fitzpatrick17k dataset, we implement novel techniques to mitigate racial bias while maintaining high diagnostic accuracy, specifically targeting the underrepresentation of dark-skinned patients in dermatological datasets.
 
 ### **Key Achievements**
-- 🎯 **AUC: 0.8718** (Target: >0.82) - Clinical-grade performance
-- 📊 **Accuracy: 88.03%** - High diagnostic reliability  
-- ⚖️ **68.8% malignant exposure** during training (vs 13.7% baseline)
-- 🎨 **8.2× protection boost** for dark skin malignant samples
-- 🔬 **First-of-its-kind** Fitzpatrick-aware augmentation strategy
+-  **AUC: 0.8718** (Target: >0.82) - Clinical-grade performance
+-  **Accuracy: 87.76%** - High diagnostic reliability  
+-  **68.8% malignant exposure** during training (vs 13.7% baseline)
+-  **8.2× protection boost** for dark skin malignant samples
 
 ---
 
-## 📊 **Dataset Overview**
+##  **Dataset Overview**
 
 This project utilizes the **Fitzpatrick17k dataset**, a comprehensive dermatological image dataset specifically designed for studying skin condition classification across different skin tones. We use the preprocessed version shared by **ndb796** on GitHub, which provides cleaned and structured data ready for machine learning applications.
 
@@ -76,17 +111,17 @@ We adopt a **binary classification approach** focusing on **Malignant vs. Non-ma
 
 Our exploratory data analysis revealed several critical challenges that directly impact model fairness:
 
-#### **🎯 Class Imbalance Challenge**
+#### ** Class Imbalance Challenge**
 - **Severe Imbalance**: 6.3:1 ratio (benign:malignant)
 - **Impact**: Standard training would bias toward benign predictions
 - **Solution**: Weighted sampling + Focal Loss implementation
 
-#### **🎨 Skin Tone Representation Bias**
+#### ** Skin Tone Representation Bias**
 - **Light Skin Dominance**: Types I-II represent 46.8% of dataset
 - **Dark Skin Underrepresentation**: Types V-VI only 13.1% of dataset
 - **Critical Gap**: Dark skin malignant cases are severely underrepresented
 
-#### **⚠️ Fairness-Critical Statistics**
+#### ** Fairness-Critical Statistics**
 | Skin Type | Total Samples | Percentage | Malignant Cases | Malignant Rate |
 |-----------|---------------|------------|-----------------|----------------|
 | I (Very Light) | 2,947 | 17.8% | ~404 | 13.7% |
@@ -96,7 +131,7 @@ Our exploratory data analysis revealed several critical challenges that directly
 | V (Dark Brown) | 1,533 | 9.2% | ~210 | 13.7% |
 | VI (Deeply Pigmented) | 635 | 3.8% | ~87 | 13.7% |
 
-#### **🔍 Key Insights for Fairness Research**
+#### ** Key Insights for Fairness Research**
 1. **Minority Group Challenge**: Dark skin malignant cases represent <2% of total dataset
 2. **Model Risk**: Standard training likely to perform poorly on dark skin patients
 3. **Ethical Imperative**: Addressing this bias is crucial for equitable healthcare AI
@@ -106,13 +141,13 @@ These challenges motivated our **fairness-aware data augmentation strategy** and
 
 ---
 
-## 🔬 **Technical Architecture**
+##  **Technical Architecture**
 
-### **🎨 Fairness-Aware Data Augmentation Strategy**
+### ** Fairness-Aware Data Augmentation Strategy**
 
 Our data augmentation strategy is **scientifically designed** and **experimentally validated** based on comprehensive analysis of the Fitzpatrick17k dataset characteristics and established medical imaging principles.
 
-#### **📊 Dataset-Driven Design Rationale**
+#### ** Dataset-Driven Design Rationale**
 
 **RGB Channel Analysis Insights:**
 - **Red Channel Dominance**: High intensity distribution (50-150 range) indicates typical dermatological imaging characteristics
@@ -124,7 +159,7 @@ Our data augmentation strategy is **scientifically designed** and **experimental
 - **Critical Sample Scarcity**: Dark skin malignant cases <2% of total samples  
 - **Fairness Imperative**: Requires protective augmentation strategies for minority groups
 
-#### **🎯 Intensity-Based Protection Strategy**
+#### ** Intensity-Based Protection Strategy**
 
 Our augmentation system implements **graduated intensity protection** based on sample vulnerability:
 
@@ -135,7 +170,7 @@ Our augmentation system implements **graduated intensity protection** based on s
 | Dark Benign | V-VI | No | 1.30× | Enhanced minority protection |
 | **Dark Malignant** | V-VI | Yes | **2.00×** | **Maximum critical protection** |
 
-#### **📈 Quantitative Validation Results**
+#### ** Quantitative Validation Results**
 
 We conducted comprehensive augmentation analysis across representative samples with the following metrics:
 
@@ -153,7 +188,7 @@ Dark_Malignant       0.053   6.87       131.56        -0.000
 - **Controlled Variation**: PSNR values demonstrate appropriate noise introduction levels
 - **Targeted Protection**: 2.0× intensity factor successfully applied to most vulnerable group
 
-### **⚖️ Fairness-Aware Data Loading & Sampling Strategy**
+### ** Fairness-Aware Data Loading & Sampling Strategy**
 
 To address the critical challenge of **diagnostic bias in medical AI**, we developed a comprehensive fairness-aware data loading pipeline that goes beyond traditional class balancing. Our approach specifically targets the **intersectional bias** affecting dark-skinned patients with malignant conditions - the most vulnerable and underrepresented group in dermatological datasets.
 
@@ -168,21 +203,18 @@ Computed using sklearn's 'balanced' strategy:
 - Malignant class weight: 3.665
 - Initial boost: 6.8× for malignant samples
 ```
-
 **Level 2: Skin Tone Fairness Adjustment**
 ```python
 # Dark skin samples (Types V-VI)
 if fitz_type >= 5:
     fairness_multiplier *= 1.5  # +50% boost
 ```
-
 **Level 3: Clinical Severity Weighting**
 ```python  
 # Malignant samples (regardless of skin type)
 if label == 1:
     fairness_multiplier *= 1.2  # +20% clinical priority
 ```
-
 **Level 4: Intersectional Protection**
 ```python
 # Dark skin + Malignant (most critical group)
@@ -198,7 +230,7 @@ if fitz_type >= 5 and label == 1:
 | **Dark Skin Representation** | ~13.0% | **18.8%** | **+1.4×** |
 | **Dark Skin Malignant Protection** | - | **8.2× weight boost** | **Critical** |
 
-### **🏗️ Model Architecture**
+### ** Model Architecture**
 
 #### **EfficientNet-B3 Backbone**
 ```python
@@ -243,7 +275,7 @@ class HybridLoss(nn.Module):
 - **30% Label Smoothing**: Prevents overfitting on noisy medical labels
 - **Synergistic Effect**: Combined approach superior to individual losses
 
-### **🎯 Real-time Fairness Monitoring System**
+### ** Real-time Fairness Monitoring System**
 
 ```python
 class FairnessMonitor:
@@ -267,7 +299,7 @@ class FairnessMonitor:
 
 ---
 
-## 🚀 **Installation & Usage**
+##  **Installation & Usage**
 
 ### **Prerequisites**
 ```bash
@@ -371,123 +403,28 @@ print(f"Fairness Score: {result['fairness_score']:.3f}")
 
 ---
 
-## 📊 **Experimental Results**
+##  **Experimental Results**
 
-### **🏆 Overall Performance**
+### **Overall Performance**
 ```
 Final Test Results:
-├── AUC Score: 0.8718 (Target: >0.82) ✅
-├── Accuracy: 88.03%
-├── Loss: 0.6845
-└── Training Time: ~2 hours (15 epochs)
+-  **AUC: 0.8718** (Target: >0.82) - Clinical-grade performance
+-  **Accuracy: 87.76%** - High diagnostic reliability  
+-  **Loss: 0.6626
 ```
 
-### **⚖️ Fairness Analysis**
+### ** Fairness Analysis**
 ```
 Fairness Metrics:
 ├── Skin Type AUC Range: 0.778 - 0.922
-├── Fairness Gap: 0.144 (Target: <0.15) ✅
+├── Fairness Gap: 0.138 (Target: <0.15) 
 ├── Dark Skin Protection: 8.2× weight boost
 └── Training Malignant Exposure: 68.8% (vs 13.7% baseline)
 ```
 
-### **🎨 Per-Skin-Type Performance**
-| Skin Type | Sample Count | AUC | Accuracy | Sensitivity | Specificity |
-|-----------|--------------|-----|----------|-------------|-------------|
-| Type I (Very Light) | 593 | 0.844 | 0.847 | 0.823 | 0.851 |
-| Type II (Light) | 958 | 0.874 | 0.879 | 0.856 | 0.883 |
-| Type III (Medium) | 676 | 0.863 | 0.868 | 0.845 | 0.871 |
-| Type IV (Medium) | 543 | 0.907 | 0.912 | 0.889 | 0.915 |
-| Type V (Dark) | 301 | 0.778 | 0.783 | 0.756 | 0.789 |
-| Type VI (Very Dark) | 132 | 0.922 | 0.927 | 0.903 | 0.931 |
+### ** Per-Skin-Type Performance**
 
-### **📈 Training Progression**
-```
-Epoch    Train_AUC    Val_AUC    Fairness_Gap    Combined_Score
-  1        0.742       0.754        0.187          0.698
-  5        0.834       0.847        0.156          0.814
- 10        0.863       0.869        0.148          0.844
- 15        0.871       0.872        0.144          0.851
-```
 
----
-
-## 🔬 **Technical Innovation**
-
-### **🌟 Novel Contributions**
-1. **First Fitzpatrick-Aware Augmentation**: Explicit skin tone bias correction in medical AI
-2. **Intersectional Protection Strategy**: Simultaneous correction for race and disease severity
-3. **Real-time Fairness Monitoring**: Live bias tracking during training process
-4. **Quantified Bias Mitigation**: Measurable 8.2× protection boost for vulnerable groups
-
-### **📚 Research Impact**
-- **Academic Value**: Novel methodology for medical AI fairness research
-- **Clinical Relevance**: Addresses real-world healthcare equity challenges
-- **Technical Innovation**: Reusable framework for bias mitigation in medical imaging
-- **Social Impact**: Promotes equitable AI development in healthcare
-
-### **🏆 Comparison with Existing Methods**
-| Approach | Our Method | Traditional CNN | Standard Augmentation |
-|----------|------------|-----------------|----------------------|
-| **Fairness-Aware** | ✅ Explicit | ❌ Ignored | ❌ Incidental |
-| **Bias Monitoring** | ✅ Real-time | ❌ Post-hoc | ❌ None |
-| **Dark Skin Protection** | ✅ 8.2× boost | ❌ Standard | ❌ Random |
-| **Performance** | ✅ 87.18% AUC | ~0.82 AUC | ~0.84 AUC |
-| **Clinical Readiness** | ✅ High | ⚠️ Biased | ⚠️ Biased |
-
----
-
-## 📁 **Project Structure**
-```
-fairness-aware-skin-classification/
-├── src/
-│   ├── models/
-│   │   ├── classifier.py          # Main model architecture
-│   │   ├── losses.py              # Hybrid loss functions
-│   │   └── fairness_monitor.py    # Bias monitoring system
-│   ├── data/
-│   │   ├── dataset.py             # Custom dataset class
-│   │   ├── augmentation.py        # Fairness-aware augmentation
-│   │   └── sampling.py            # Weighted sampling strategies
-│   ├── training/
-│   │   ├── trainer.py             # Training loop implementation
-│   │   ├── evaluation.py          # Model evaluation utilities
-│   │   └── fairness_analysis.py   # Bias analysis tools
-│   └── utils/
-│       ├── config.py              # Configuration management
-│       ├── visualization.py       # Plotting and visualization
-│       └── metrics.py             # Custom metrics calculation
-├── notebooks/
-│   ├── 01_data_exploration.ipynb  # EDA and bias analysis
-│   ├── 02_augmentation_analysis.ipynb # Augmentation validation
-│   ├── 03_training_analysis.ipynb # Training process analysis
-│   └── 04_fairness_evaluation.ipynb # Comprehensive fairness study
-├── scripts/
-│   ├── train.py                   # Training script
-│   ├── evaluate.py                # Evaluation script
-│   ├── analyze_fairness.py        # Fairness analysis script
-│   └── inference.py               # Inference utilities
-├── configs/
-│   ├── default.yaml               # Default configuration
-│   ├── fairness_focused.yaml      # Fairness-prioritized config
-│   └── performance_focused.yaml   # Performance-prioritized config
-├── requirements.txt               # Python dependencies
-├── README.md                      # This file
-└── LICENSE                        # MIT License
-```
-
----
-
-## 🤝 **Contributing**
-
-We welcome contributions to improve the fairness and performance of medical AI systems!
-
-### **How to Contribute**
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ### **Areas for Contribution**
 - **New Fairness Metrics**: Implement additional bias measurement techniques
@@ -498,7 +435,7 @@ We welcome contributions to improve the fairness and performance of medical AI s
 
 ---
 
-## 📜 **Citation**
+##  **Citation**
 
 If you use this work in your research, please cite:
 
@@ -514,13 +451,13 @@ If you use this work in your research, please cite:
 
 ---
 
-## 📄 **License**
+##  **License**
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 **Acknowledgments**
+##  **Acknowledgments**
 
 - **Harvard Medical School** for the original Fitzpatrick17k dataset
 - **ndb796** for the preprocessed dataset version
@@ -529,15 +466,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📞 **Contact**
 
-- **Project Lead**: [Your Name] - [your.email@domain.com]
-- **GitHub**: [@your-username](https://github.com/your-username)
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/your-profile)
-
----
-
-## 🔗 **Related Work**
+##  **Related Work**
 
 - [Fitzpatrick17k Original Paper](https://arxiv.org/abs/2104.09957)
 - [EfficientNet: Rethinking Model Scaling](https://arxiv.org/abs/1905.11946)
@@ -546,4 +476,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-*This project represents a significant step forward in developing equitable AI systems for healthcare, combining technical excellence with social responsibility to address one of the most pressing challenges in medical AI today.*
