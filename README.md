@@ -93,6 +93,8 @@ The Fitzpatrick17k dataset contains 9 key columns providing comprehensive metada
 
 We adopt a **binary classification approach** focusing on **Malignant vs. Non-malignant** lesions, which differs from traditional multi-class skin cancer classification:
 
+<img src="./readme_images/2.png" alt="Binary Classfication Strategy Comparison" width="500">
+
 #### **Why Binary Classification?**
 1. **Clinical Relevance**: The most critical decision in dermatology is distinguishing malignant from non-malignant lesions
 2. **Fairness Focus**: Binary classification allows clearer analysis of diagnostic bias across skin types
@@ -121,7 +123,7 @@ Our exploratory data analysis revealed several critical challenges that directly
 - **Dark Skin Underrepresentation**: Types V-VI only 13.1% of dataset
 - **Critical Gap**: Dark skin malignant cases are severely underrepresented
 
-![Skin Type Distribution](./readme_images/1.png)
+<img src="./readme_images/1.png" alt="Skin Type Distribution" width="500">
 
 #### ** Fairness-Critical Statistics**
 | Skin Type | Total Samples | Percentage | Malignant Cases | Malignant Rate |
@@ -438,6 +440,9 @@ Our fairness-aware pipeline achieved high overall accuracy while reducing perfor
 | Baseline ResNet-50              | 0.842       | 0.865            | 0.838               | 0.771           | 0.094                |
 | + Fairness-Aware Augmentation   | 0.856       | 0.861            | 0.843               | 0.816           | 0.045                |
 | + Weighted Sampling (Final)     | **0.8718**  | 0.868            | 0.857               | 0.848           | **0.020**            |
+
+<img src="./readme_images/3.png" alt="ROC Curve" width="500">
+<img src="./readme_images/5.png" alt="AUC Performance by Skin Type" width="500">
 
 **Key observations:**
 - The baseline model underperformed significantly for darker skin tones (AUC 0.771).  
