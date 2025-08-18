@@ -425,6 +425,63 @@ Fairness Metrics:
 ### ** Per-Skin-Type Performance**
 
 
+### Results
+
+Our fairness-aware pipeline achieved high overall accuracy while reducing performance disparities across skin tones.
+
+| Model Variant                   | Overall AUC | AUC (Light I–II) | AUC (Medium III–IV) | AUC (Dark V–VI) | ΔAUC (Light – Dark) |
+|---------------------------------|-------------|------------------|---------------------|-----------------|----------------------|
+| Baseline ResNet-50              | 0.842       | 0.865            | 0.838               | 0.771           | 0.094                |
+| + Fairness-Aware Augmentation   | 0.856       | 0.861            | 0.843               | 0.816           | 0.045                |
+| + Weighted Sampling (Final)     | **0.8718**  | 0.868            | 0.857               | 0.848           | **0.020**            |
+
+**Key observations:**
+- The baseline model underperformed significantly for darker skin tones (AUC 0.771).  
+- Fairness-aware augmentation improved dark-skin AUC by +0.045.  
+- Combining augmentation with weighted sampling reduced the fairness gap from **0.094 → 0.020**, while improving overall AUC.  
+
+This demonstrates that fairness-aware strategies can **improve both equity and accuracy**, rather than trading one for the other.
+
+### Limitations
+
+While our fairness-aware framework demonstrates promising results, several limitations remain:
+
+1. **Dataset scope**  
+   - The Fitzpatrick17k dataset, although diverse, is not fully representative of global populations. Some ethnicities and rare conditions remain underrepresented.  
+   - Labels are limited to visual diagnosis, lacking integration with patient metadata (e.g., age, family history).
+
+2. **Fairness metrics**  
+   - We primarily focus on per-group AUC and accuracy gaps across Fitzpatrick skin types. Other dimensions of fairness, such as intersectionality (e.g., age × skin tone, gender × skin tone), remain unexplored.  
+
+3. **Model generalizability**  
+   - The model was trained and validated on Fitzpatrick17k only. Generalization to external clinical datasets (e.g., Derm7pt, ISIC 2020) has not yet been evaluated.  
+   - Domain shift (lighting, camera devices, geographic variations) may still affect performance.
+
+4. **Clinical deployment gap**  
+   - While achieving fairness improvements in controlled experiments, the model has not been tested in real-world clinical workflows or prospective studies.
+
+### Future Work
+
+Building on the current foundation, several directions are promising:
+
+1. **Cross-dataset validation**  
+   - Extend evaluation to other dermatology datasets (e.g., ISIC, PAD-UFES-20) to test robustness and ensure external validity.  
+
+2. **Fairness beyond skin tone**  
+   - Incorporate additional sensitive attributes (age, gender, socioeconomic background) to address intersectional fairness.  
+   - Explore causal fairness approaches to disentangle biological vs. dataset-driven bias.  
+
+3. **Multi-modal integration**  
+   - Combine image data with textual records (EHR notes, patient questionnaires) to enrich diagnostic context and reduce visual bias reliance.  
+
+4. **Bias-aware training objectives**  
+   - Experiment with adversarial debiasing or fairness-aware loss functions to enforce equitable representations during model training.  
+
+5. **Human-AI collaboration**  
+   - Design interfaces for dermatologists to provide feedback, enabling iterative refinement of fairness while improving clinician trust.  
+
+6. **Towards deployment**  
+   - Conduct pilot studies with clinical partners to evaluate usability, ethical implications, and effectiveness in real diagnostic settings.
 
 ### **Areas for Contribution**
 - **New Fairness Metrics**: Implement additional bias measurement techniques
