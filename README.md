@@ -121,6 +121,8 @@ Our exploratory data analysis revealed several critical challenges that directly
 - **Dark Skin Underrepresentation**: Types V-VI only 13.1% of dataset
 - **Critical Gap**: Dark skin malignant cases are severely underrepresented
 
+![Skin Type Distribution](./readme_images/1.png)
+
 #### ** Fairness-Critical Statistics**
 | Skin Type | Total Samples | Percentage | Malignant Cases | Malignant Rate |
 |-----------|---------------|------------|-----------------|----------------|
